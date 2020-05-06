@@ -16,26 +16,46 @@ function commonAncestor (tree, nodes) {
     throw new Error('unist-common-ancestor requires nodes to find ancestor in tree')
   }
 
-  const targets = nodes.slice(1).map(child => find(tree, child))
-
-  let candidates
   const target = find(tree, nodes[0])
-  visit(tree, target, (_, parents) => { candidates = parents.reverse() })
 
-  const result = candidates.reduce((found, candidate) => {
+  if (!target) {
+    throw new Error('unist-common-ancestor requires all nodes be contained in the tree')
+  }
+
+  const targets = nodes.slice(1).map(child => find(tree, child))
+    .filter(node => {
+      if (!node) {
+        throw new Error('unist-common-ancestor requires all nodes be contained in the tree')
+      }
+      return node
+    })
+
+  const result = getParents(tree, target).reduce((found, parent) => {
     if (found) {
       return found
     }
-    const containsAll = targets.reduce((bool, target) => {
-      return bool && !!find(candidate, target)
+    const containsAllChildren = targets.reduce((bool, target) => {
+      return bool && !!find(parent, target)
     }, true)
-    if (containsAll) {
-      return candidate
+    if (containsAllChildren) {
+      return parent
     }
     return false
   }, false)
 
   return result || undefined
+}
+
+/**
+ * @param {Node} tree - Root node
+ * @param {Object} target - Target node
+ */
+function getParents (tree, target) {
+  let result
+  visit(tree, target, (_, parents) => {
+    result = parents.reverse()
+  })
+  return result
 }
 
 /*
