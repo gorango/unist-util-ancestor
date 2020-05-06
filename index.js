@@ -8,8 +8,13 @@ const find = require('unist-util-find')
  * @param {array} [nodes] - Children of ancestor to find
  */
 function commonAncestor (tree, nodes) {
-  if (!tree) throw new Error('unist-common-ancestor requires a tree to search')
-  if (!nodes) throw new Error('unist-common-ancestor requires nodes to find')
+  if (!tree) {
+    throw new Error('unist-common-ancestor requires a tree to search')
+  }
+
+  if (!nodes || !nodes.length) {
+    throw new Error('unist-common-ancestor requires nodes to find ancestor in tree')
+  }
 
   const targets = nodes.slice(1).map(child => find(tree, child))
 
