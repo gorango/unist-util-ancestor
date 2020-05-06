@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "unist-util-find": "^1.0.1",
-    "unist-util-parents": "^1.0.3",
     "unist-util-visit-parents": "^3.0.2"
   }
 }
