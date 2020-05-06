@@ -1,0 +1,34 @@
+{
+  "name": "unist-util-common-ancestor",
+  "version": "1.0.0",
+  "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
+  "repository": "https://github.com/gorango/unist-util-common-ancestor",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "keywords": [
+    "unist",
+    "remark",
+    "retext",
+    "rehype",
+    "hast",
+    "mdast",
+    "nlcst",
+    "find",
+    "ancestor",
+    "search"
+  ],
+  "author": "Goran Spasojevic <goran@n5e.dev> @gorango",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^8.0.0",
+    "tape": "^4.6.0",
+    "unist-builder": "^2.0.3"
+  },
+  "dependencies": {
+    "unist-util-find": "^1.0.1",
+    "unist-util-parents": "^1.0.3",
+    "unist-util-visit-parents": "^3.0.2"
+  }
+}
