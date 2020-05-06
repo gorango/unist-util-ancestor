@@ -6,19 +6,19 @@ const commonAncestor = require('./index')
 test('unist-common-ancestor', function (t) {
   const tree =
     u('root', [
-      u('node', {id: 1}, [
-        u('node', {id: 2}, [
+      u('node', { id: 1 }, [
+        u('node', { id: 2 }, [
           u('leaf', 'leaf 0')
         ])
       ]),
-      u('node', {id: 3}, [
-        u('node', {id: 4}, [
+      u('node', { id: 3 }, [
+        u('node', { id: 4 }, [
           u('leaf', 'leaf 1'),
           u('leaf', 'leaf 2')
         ]),
-        u('node', {id: 5}, [
+        u('node', { id: 5 }, [
           u('leaf', 'leaf 3'),
-          u('node', {id: 6}, [
+          u('node', { id: 6 }, [
             u('leaf', 'leaf 4'),
             u('leaf', 'leaf 5')
           ])
@@ -26,7 +26,6 @@ test('unist-common-ancestor', function (t) {
         u('leaf', 'leaf 6')
       ])
     ])
-  // console.log(tree)
 
   t.throws(function () {
     commonAncestor()
@@ -42,10 +41,10 @@ test('unist-common-ancestor', function (t) {
 
   t.test('should find with one node', function (st) {
     const targets = [
-      find(tree, {value: 'leaf 5'})
+      find(tree, { value: 'leaf 5' })
     ]
     const actual = commonAncestor(tree, targets)
-    const expected = find(tree, {id: 6})
+    const expected = find(tree, { id: 6 })
 
     st.equal(actual, expected)
     st.end()
@@ -53,11 +52,11 @@ test('unist-common-ancestor', function (t) {
 
   t.test('should find with two nodes', function (st) {
     const targets = [
-      find(tree, {value: 'leaf 3'}),
-      find(tree, {value: 'leaf 5'})
+      find(tree, { value: 'leaf 3' }),
+      find(tree, { value: 'leaf 5' })
     ]
     const actual = commonAncestor(tree, targets)
-    const expected = find(tree, {id: 5})
+    const expected = find(tree, { id: 5 })
 
     st.equal(actual, expected)
     st.end()
@@ -65,10 +64,10 @@ test('unist-common-ancestor', function (t) {
 
   t.test('should find with four nodes', function (st) {
     const targets = [
-      find(tree, {value: 'leaf 0'}),
-      find(tree, {value: 'leaf 1'}),
-      find(tree, {value: 'leaf 3'}),
-      find(tree, {value: 'leaf 5'})
+      find(tree, { value: 'leaf 0' }),
+      find(tree, { value: 'leaf 1' }),
+      find(tree, { value: 'leaf 3' }),
+      find(tree, { value: 'leaf 5' })
     ]
     const actual = commonAncestor(tree, targets)
     const expected = tree

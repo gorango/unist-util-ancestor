@@ -22,8 +22,8 @@
   "author": "Goran Spasojevic <goran@n5e.dev> @gorango",
   "license": "MIT",
   "devDependencies": {
-    "standard": "^8.0.0",
-    "tape": "^4.6.0",
+    "standard": "^14.3.3",
+    "tape": "^5.0.0",
     "unist-builder": "^2.0.3"
   },
   "dependencies": {
