@@ -1,7 +1,8 @@
-const test = require('tape')
-const u = require('unist-builder')
-const find = require('unist-util-find')
-const commonAncestor = require('./index')
+import test from 'tape'
+import { u } from 'unist-builder'
+import find from 'unist-util-find'
+
+import commonAncestor from './index.js'
 
 test('unist-common-ancestor', function (t) {
   const tree =

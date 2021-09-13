@@ -4,8 +4,10 @@
   "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
   "repository": "https://github.com/gorango/unist-util-common-ancestor",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "standard && node test.js"
+    "test": "node test.js",
+    "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
   },
   "keywords": [
     "unist",
@@ -19,15 +21,14 @@
     "ancestor",
     "search"
   ],
-  "author": "Goran Spasojevic <goran@n5e.dev> @gorango",
+  "author": "Goran Spasojevic <gospaso@gmail.com> @gorango",
   "license": "MIT",
   "devDependencies": {
-    "standard": "^14.3.3",
-    "tape": "^5.0.0",
-    "unist-builder": "^2.0.3"
+    "tape": "^5.3.1",
+    "unist-builder": "^3.0.0"
   },
   "dependencies": {
-    "unist-util-find": "^1.0.1",
-    "unist-util-visit-parents": "^3.0.2"
+    "unist-util-find": "^1.0.2",
+    "unist-util-visit-parents": "^5.0.0"
   }
 }

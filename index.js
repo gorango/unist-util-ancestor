@@ -1,5 +1,5 @@
-const visit = require('unist-util-visit-parents')
-const find = require('unist-util-find')
+import { visitParents } from 'unist-util-visit-parents'
+import find from 'unist-util-find'
 
 /**
  * Common Ancestor
@@ -7,7 +7,7 @@ const find = require('unist-util-find')
  * @param {Node} tree - Root node
  * @param {array} [nodes] - Children of ancestor to find
  */
-function commonAncestor (tree, nodes) {
+export default function commonAncestor (tree, nodes) {
   if (!tree) {
     throw new Error('unist-common-ancestor requires a tree to search')
   }
@@ -43,7 +43,7 @@ function commonAncestor (tree, nodes) {
     return false
   }, false)
 
-  return result || undefined
+  return result
 }
 
 /**
@@ -52,13 +52,8 @@ function commonAncestor (tree, nodes) {
  */
 function getParents (tree, target) {
   let result
-  visit(tree, target, (_, parents) => {
+  visitParents(tree, target, (_, parents) => {
     result = parents.reverse()
   })
   return result
 }
-
-/*
- * Expose.
- */
-module.exports = commonAncestor
