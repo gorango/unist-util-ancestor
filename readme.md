@@ -1,11 +1,11 @@
-# unist-util-common-ancestor
+# unist-util-ancestor
 
 [Unist](https://github.com/wooorm/unist) node finder utility. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
 
 ## Installation
 
 ```
-npm install --save unist-util-common-ancestor
+npm install unist-util-ancestor
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install --save unist-util-common-ancestor
 
 ### API
 
-#### `commonAncestor(tree, nodes)`
+#### `findAncestor(tree, nodes)`
 
 Return the first node that contains all `nodes`, or `undefined` if no node matches.
 

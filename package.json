@@ -1,8 +1,8 @@
 {
-  "name": "unist-util-common-ancestor",
+  "name": "unist-util-ancestor",
   "version": "1.0.0",
   "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
-  "repository": "https://github.com/gorango/unist-util-common-ancestor",
+  "repository": "https://github.com/gorango/unist-util-ancestor",
   "main": "index.js",
   "type": "module",
   "scripts": {

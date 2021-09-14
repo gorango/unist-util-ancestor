@@ -2,9 +2,9 @@ import test from 'tape'
 import { u } from 'unist-builder'
 import find from 'unist-util-find'
 
-import commonAncestor from './index.js'
+import findAncestor from './index.js'
 
-test('unist-common-ancestor', function (t) {
+test('unist-util-ancestor', function (t) {
   const tree =
     u('root', [
       u('node', { id: 1 }, [
@@ -29,20 +29,20 @@ test('unist-common-ancestor', function (t) {
     ])
 
   t.throws(function () {
-    commonAncestor()
+    findAncestor()
   }, 'should fail without tree')
 
   t.throws(function () {
-    commonAncestor(tree)
+    findAncestor(tree)
   }, 'should fail without nodes')
 
   t.throws(function () {
-    commonAncestor(tree, [])
+    findAncestor(tree, [])
   }, 'should fail with empty nodes')
 
   t.throws(function () {
     const nodes = [{ type: 'leaf', value: 'leaf 55' }]
-    commonAncestor(tree, nodes)
+    findAncestor(tree, nodes)
   }, 'should fail with non-existing node')
 
   t.throws(function () {
@@ -50,14 +50,14 @@ test('unist-common-ancestor', function (t) {
       { type: 'leaf', value: 'leaf 5' },
       { type: 'leaf', value: 'leaf 53' }
     ]
-    commonAncestor(tree, nodes)
+    findAncestor(tree, nodes)
   }, 'should fail with non-existing nodes')
 
   t.test('should find ancestor with one node', function (st) {
     const nodes = [
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = commonAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodes)
     const expected = find(tree, { id: 6 })
 
     st.equal(actual, expected, 'should work with 1')
@@ -69,7 +69,7 @@ test('unist-common-ancestor', function (t) {
       find(tree, { value: 'leaf 3' }),
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = commonAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodes)
     const expected = find(tree, { id: 5 })
 
     st.equal(actual, expected, 'should work with 2')
@@ -82,7 +82,7 @@ test('unist-common-ancestor', function (t) {
       find(tree, { value: 'leaf 3' }),
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = commonAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodes)
     const expected = find(tree, { id: 3 })
 
     st.equal(actual, expected, 'should work with 3')
@@ -96,7 +96,7 @@ test('unist-common-ancestor', function (t) {
       find(tree, { value: 'leaf 3' }),
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = commonAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodes)
     const expected = tree
 
     st.equal(actual, expected, 'should work with 4')
