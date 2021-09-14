@@ -88,19 +88,5 @@ test('unist-util-ancestor', function (t) {
     st.end()
   })
 
-  t.test('should find ancestor with four nodes', function (st) {
-    const nodes = [
-      find(tree, { value: 'leaf 0' }),
-      find(tree, { value: 'leaf 1' }),
-      find(tree, { value: 'leaf 3' }),
-      find(tree, { value: 'leaf 5' })
-    ]
-    const actual = findAncestor(tree, nodes)
-    const expected = tree
-
-    st.equal(actual, expected, 'should work with 4')
-    st.end()
-  })
-
   t.end()
 })
