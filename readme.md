@@ -2,7 +2,6 @@
 
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
 [Unist](https://github.com/wooorm/unist) node finder utility. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
@@ -40,8 +39,8 @@ const tree =
   ])
 
 const nodes = [
-  { type: 'leaf', value: 'leaf 1' },
-  { type: 'leaf', value: 'leaf 2' }
+  { value: 'leaf 1' },
+  { value: 'leaf 2' }
 ]
 
 console.log(inspect(findAncestor(tree, nodes)))
