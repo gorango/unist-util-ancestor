@@ -15,7 +15,7 @@ jobs:
       - run: npm run coverage
       - uses: codecov/codecov-action@v2.0.2
         with:
-          token: 14dd4f18-5867-4419-86da-47d0dc0cf418
+          token: 767dcd56-af4a-4bcb-acfa-0ed55d9d5441
     strategy:
       matrix:
         node:
