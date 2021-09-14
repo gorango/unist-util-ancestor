@@ -1,7 +1,6 @@
 import test from 'tape'
 import { u } from 'unist-builder'
 import find from 'unist-util-find'
-
 import findAncestor from './index.js'
 
 test('unist-util-ancestor', function (t) {

@@ -1,3 +1,13 @@
+/**
+ * @typedef {import('unist').Node} Node
+ * @typedef {import('unist').Data} Data
+ * @typedef {import('unist-util-visit-parents').Visitor<Data>} Visitor
+ * @typedef {import('unist').NodeData<Data>} NodeData
+ *
+ * @typedef {Object} InspectOptions
+ * @property {boolean} [showPositions=true]
+ */
+
 import { visitParents } from 'unist-util-visit-parents'
 import find from 'unist-util-find'
 
@@ -5,7 +15,8 @@ import find from 'unist-util-find'
  * Find Ancestor
  *
  * @param {Node} tree - Root node
- * @param {array} [nodes] - Children of ancestor to find
+ * @param {[Node]} [nodes] - Children of ancestor to find
+ * @returns {Node|undefined|boolean}
  */
 export default function findAncestor (tree, nodes) {
   if (!tree) {
@@ -30,6 +41,7 @@ export default function findAncestor (tree, nodes) {
       return node
     })
 
+  // @ts-ignore
   const result = getParents(tree, target).reduce((found, parent) => {
     if (found) {
       return found
@@ -48,10 +60,11 @@ export default function findAncestor (tree, nodes) {
 
 /**
  * @param {Node} tree - Root node
- * @param {Object} target - Target node
+ * @param {Data} target - Target node
+ * @returns {Node[]}
  */
 function getParents (tree, target) {
-  let result
+  let result = [tree]
   visitParents(tree, target, (_, parents) => {
     result = parents.reverse()
   })
