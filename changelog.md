@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/gorango/unist-util-ancestor/compare/v1.1.0...v1.1.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* remove unused ts defs ([42b678e](https://github.com/gorango/unist-util-ancestor/commit/42b678e430f589abba61a9227a6f093223935490))
+
 ## 1.1.0 (2021-09-14)
 
 
