@@ -1,7 +1,7 @@
 {
   "name": "unist-util-ancestor",
   "version": "1.1.1",
-  "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
+  "description": "Unist utility for finding a common ancestor for multiple nodes. Useful for working with remark, rehype and retext.",
   "license": "MIT",
   "keywords": [
     "unist",
