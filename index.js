@@ -1,65 +1,52 @@
 /**
  * @typedef {import('unist').Node} Node
- * @typedef {import('unist').Data} Data
  */
 
 import { visitParents } from 'unist-util-visit-parents'
-import find from 'unist-util-find'
 
 /**
  * Find Ancestor
  *
  * @param {Node} tree - Root node
- * @param {[Node]} [nodes] - Children of ancestor to find
- * @returns {Node|undefined}
+ * @param {Node[]} [nodesToFind] - Children of ancestor to find
+ * @returns {Node}
  */
-export default function findAncestor (tree, nodes) {
+export default function findAncestor (tree, nodesToFind) {
   if (!tree) {
     throw new Error('unist-util-ancestor requires a tree to search')
   }
 
-  if (!nodes || !nodes.length) {
+  if (!nodesToFind || !nodesToFind.length) {
     throw new Error('unist-util-ancestor requires nodes to find ancestor in tree')
   }
 
-  const target = find(tree, nodes[0])
+  const stacks = new Map()
+  let index = 0
 
-  if (!target) {
-    throw new Error('unist-util-ancestor requires all nodes be contained in the tree')
+  visitParents(tree, (node, parents) => {
+    if (nodesToFind.includes(node)) {
+      index = Math.max(index, parents.length)
+      stacks.set(node, parents)
+    }
+  })
+
+  nodesToFind.forEach(node => {
+    if (!stacks.has(node)) {
+      throw new Error('unist-util-ancestor requires all nodes be contained in the tree')
+    }
+  })
+
+  let ancestor = tree
+
+  while (--index) {
+    const nextAncestor = stacks.get(nodesToFind[0])[index]
+    const shared = nodesToFind.every(node => stacks.get(node)[index] === nextAncestor)
+
+    if (shared) {
+      ancestor = nextAncestor
+      break
+    }
   }
 
-  const targets = nodes.slice(1).map(child => find(tree, child))
-    .filter(node => {
-      if (!node) {
-        throw new Error('unist-util-ancestor requires all nodes be contained in the tree')
-      }
-      return node
-    })
-
-  const result = getParents(tree, target).reduce((found, parent) => {
-    if (found) {
-      return found
-    }
-    const containsAllChildren = targets.reduce((bool, target) => {
-      return bool && Boolean(find(parent, target))
-    }, true)
-    if (containsAllChildren) {
-      return parent
-    }
-  }, undefined)
-
-  return result
-}
-
-/**
- * @param {Node} tree - Root node
- * @param {Data} target - Target node
- * @returns {Node[]}
- */
-function getParents (tree, target) {
-  let result = [tree]
-  visitParents(tree, target, (_, parents) => {
-    result = parents.reverse()
-  })
-  return result
+  return ancestor
 }

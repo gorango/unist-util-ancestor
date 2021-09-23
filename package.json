@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@types/unist": "^2.0.0",
-    "unist-util-find": "^1.0.2",
     "unist-util-visit-parents": "^5.0.0"
   },
   "devDependencies": {
