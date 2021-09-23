@@ -75,7 +75,7 @@ test('unist-util-ancestor', function (t) {
     st.end()
   })
 
-  t.test('should find ancestor with three nodes', function (st) {
+  t.test('should find ancestor with more than two nodes', function (st) {
     const nodes = [
       find(tree, { value: 'leaf 1' }),
       find(tree, { value: 'leaf 3' }),
