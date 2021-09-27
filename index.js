@@ -20,12 +20,12 @@ export default function findAncestor (tree, nodesToFind) {
     throw new Error('unist-util-ancestor requires nodes to find ancestor in tree')
   }
 
+  let depth = 0
   const stacks = new Map()
-  let index = 0
 
   visitParents(tree, (node, parents) => {
     if (nodesToFind.includes(node)) {
-      index = Math.max(index, parents.length)
+      depth = Math.max(depth, parents.length)
       stacks.set(node, parents)
     }
   })
@@ -38,9 +38,9 @@ export default function findAncestor (tree, nodesToFind) {
 
   let ancestor = tree
 
-  while (--index) {
-    const nextAncestor = stacks.get(nodesToFind[0])[index]
-    const shared = nodesToFind.every(node => stacks.get(node)[index] === nextAncestor)
+  while (--depth) {
+    const nextAncestor = stacks.get(nodesToFind[0])[depth]
+    const shared = nextAncestor && nodesToFind.every(node => stacks.get(node)[depth] === nextAncestor)
 
     if (shared) {
       ancestor = nextAncestor
