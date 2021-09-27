@@ -28,6 +28,7 @@ test('unist-util-ancestor', function (t) {
     ])
 
   t.throws(function () {
+    // @ts-expect-error runtime
     findAncestor()
   }, 'should fail without tree')
 
