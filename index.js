@@ -16,8 +16,8 @@ export default function findAncestor (tree, nodesToFind) {
     throw new Error('unist-util-ancestor requires a tree to search')
   }
 
-  if (!nodesToFind || !nodesToFind.length) {
-    throw new Error('unist-util-ancestor requires nodes to find ancestor in tree')
+  if (!nodesToFind?.length) {
+    throw new Error('unist-util-ancestor requires nodes to find the ancestor')
   }
 
   let depth = 0

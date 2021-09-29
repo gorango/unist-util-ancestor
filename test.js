@@ -41,23 +41,23 @@ test('unist-util-ancestor', function (t) {
   }, 'should fail with empty nodes')
 
   t.throws(function () {
-    const nodes = [{ type: 'leaf', value: 'leaf 55' }]
-    findAncestor(tree, nodes)
+    const nodesToFind = [{ type: 'leaf', value: 'leaf 55' }]
+    findAncestor(tree, nodesToFind)
   }, 'should fail with non-existent node')
 
   t.throws(function () {
-    const nodes = [
+    const nodesToFind = [
       { type: 'leaf', value: 'leaf 5' },
       { type: 'leaf', value: 'leaf 53' }
     ]
-    findAncestor(tree, nodes)
+    findAncestor(tree, nodesToFind)
   }, 'should fail with non-existent nodes')
 
   t.test('should find ancestor with one node', function (st) {
-    const nodes = [
+    const nodesToFind = [
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = findAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodesToFind)
     const expected = find(tree, { id: 6 })
 
     st.equal(actual, expected, 'should work with 1')
@@ -65,11 +65,11 @@ test('unist-util-ancestor', function (t) {
   })
 
   t.test('should find ancestor with two nodes', function (st) {
-    const nodes = [
+    const nodesToFind = [
       find(tree, { value: 'leaf 3' }),
       find(tree, { value: 'leaf 5' })
     ]
-    const actual = findAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodesToFind)
     const expected = find(tree, { id: 5 })
 
     st.equal(actual, expected, 'should work with 2')
@@ -77,13 +77,13 @@ test('unist-util-ancestor', function (t) {
   })
 
   t.test('should find ancestor with more than two nodes', function (st) {
-    const nodes = [
+    const nodesToFind = [
       find(tree, { value: 'leaf 1' }),
       find(tree, { value: 'leaf 3' }),
       find(tree, { value: 'leaf 5' }),
       find(tree, { value: 'leaf 6' })
     ]
-    const actual = findAncestor(tree, nodes)
+    const actual = findAncestor(tree, nodesToFind)
     const expected = find(tree, { id: 3 })
 
     st.equal(actual, expected, 'should work with more than 2 nodes')
