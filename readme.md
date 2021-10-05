@@ -65,7 +65,7 @@ Return the closest node that contains all `nodesToFind`.
 - `tree` ([`Node`](https://github.com/wooorm/unist#node)) - Unist node to search
 - `nodesToFind` ([`Node[]`](https://github.com/wooorm/unist#node)) - Array of unist nodes
 
-# Test
+## Test
 
 Run `npm test` to run tests.
 
