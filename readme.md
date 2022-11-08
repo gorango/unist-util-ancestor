@@ -58,12 +58,13 @@ node[2]
 
 ### API
 
-#### `findAncestor(tree, nodesToFind)`
+#### `findAncestor(tree, nodesToFind[, includeNodes])`
 
 Return the closest node that contains all `nodesToFind`.
 
 - `tree` ([`Node`](https://github.com/wooorm/unist#node)) - Unist node to search
 - `nodesToFind` ([`Node[]`](https://github.com/wooorm/unist#node)) - Array of unist nodes
+- `includeNodes` (`boolean`) - Whether to include target nodes in response
 
 ## Test
 

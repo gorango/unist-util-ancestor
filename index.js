@@ -8,10 +8,11 @@ import { visitParents } from 'unist-util-visit-parents'
  * Find Ancestor
  *
  * @param {Node} tree - Root node
- * @param {Node[]} [nodesToFind] - Children of ancestor to find
+ * @param {Node[]} nodesToFind - Children of ancestor to find
+ * @param {boolean} [includeNodes] - Whether to include target nodes in response
  * @returns {Node}
  */
-export default function findAncestor (tree, nodesToFind) {
+export default function findAncestor (tree, nodesToFind, includeNodes) {
   if (!tree) {
     throw new Error('unist-util-ancestor requires a tree to search')
   }
@@ -24,6 +25,10 @@ export default function findAncestor (tree, nodesToFind) {
   const stacks = new Map()
 
   visitParents(tree, (node, parents) => {
+    if (includeNodes) {
+      // @ts-ignore
+      parents = [...parents, node]
+    }
     if (nodesToFind.includes(node)) {
       depth = Math.max(depth, parents.length)
       stacks.set(node, parents)

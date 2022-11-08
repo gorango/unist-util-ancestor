@@ -90,5 +90,15 @@ test('unist-util-ancestor', function (t) {
     st.end()
   })
 
+test('include ancestor', function (t) {
+  const nodesToFind = [
+    find(tree, { id: 3 }),
+    find(tree, { id: 4 }),
+    find(tree, { id: 5 }),
+  ]
+  const actual = findAncestor(tree, nodesToFind, true)
+  const expected = find(tree, { id: 3 })
+
+  t.equal(actual, expected, 'should return node if ancestor')
   t.end()
 })
