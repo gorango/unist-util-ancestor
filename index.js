@@ -24,14 +24,14 @@ export default function findAncestor (tree, nodesToFind, includeNodes) {
   let depth = 0
   const stacks = new Map()
 
-  visitParents(tree, (node, parents) => {
+  visitParents(tree, (node, ancestors) => {
     if (includeNodes) {
       // @ts-ignore
-      parents = [...parents, node]
+      ancestors = [...ancestors, node]
     }
     if (nodesToFind.includes(node)) {
-      depth = Math.max(depth, parents.length)
-      stacks.set(node, parents)
+      depth = Math.max(depth, ancestors.length)
+      stacks.set(node, ancestors)
     }
   })
 
