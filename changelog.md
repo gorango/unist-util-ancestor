@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/gorango/unist-util-ancestor/compare/v1.2.2...v1.3.0) (2022-11-08)
+
+
+### Features
+
+* add option to include targets in response ([543eb57](https://github.com/gorango/unist-util-ancestor/commit/543eb57e426d7a8401f93847236cd7ae79fd5038))
+
 ### [1.2.2](https://github.com/gorango/unist-util-ancestor/compare/v1.2.0...v1.2.2) (2022-11-04)
 
 ### [1.2.1](https://github.com/gorango/unist-util-ancestor/compare/v1.2.0...v1.2.1) (2021-09-27)
