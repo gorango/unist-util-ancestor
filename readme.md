@@ -60,7 +60,7 @@ node[2]
 
 #### `findAncestor(tree, nodesToFind[, includeNodes])`
 
-Return the closest node that contains all `nodesToFind`.
+Return the closest node that contains all `nodesToFind` along with `data.depth` containing the distance between the deepest node.
 
 - `tree` ([`Node`](https://github.com/wooorm/unist#node)) - Unist node to search
 - `nodesToFind` ([`Node[]`](https://github.com/wooorm/unist#node)) - Array of unist nodes

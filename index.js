@@ -1,5 +1,5 @@
 /**
- * @typedef {import('unist').Node} Node
+ * @typedef { import('unist').Node } Node
  */
 
 import { visitParents } from 'unist-util-visit-parents'
@@ -7,10 +7,10 @@ import { visitParents } from 'unist-util-visit-parents'
 /**
  * Find Ancestor
  *
- * @param {Node} tree - Root node
- * @param {Node[]} nodesToFind - Children of ancestor to find
- * @param {boolean} [includeNodes] - Whether to include target nodes in response
- * @returns {Node}
+ * @param { Node } tree - Root node
+ * @param { Node[] } nodesToFind - Children of ancestor to find
+ * @param { boolean } [includeNodes] - Whether to include target nodes in response
+ * @returns { Node & { data?: { depth?: number } } } - Ancestor Node with data.depth
  */
 export default function findAncestor (tree, nodesToFind, includeNodes) {
   if (!tree) {
@@ -22,6 +22,7 @@ export default function findAncestor (tree, nodesToFind, includeNodes) {
   }
 
   let depth = 0
+  let maxDepth = 0
   const stacks = new Map()
 
   visitParents(tree, (node, ancestors) => {
@@ -30,7 +31,7 @@ export default function findAncestor (tree, nodesToFind, includeNodes) {
       ancestors = [...ancestors, node]
     }
     if (nodesToFind.includes(node)) {
-      depth = Math.max(depth, ancestors.length)
+      depth = maxDepth = Math.max(depth, ancestors.length)
       stacks.set(node, ancestors)
     }
   })
@@ -49,6 +50,8 @@ export default function findAncestor (tree, nodesToFind, includeNodes) {
 
     if (shared) {
       ancestor = nextAncestor
+      ancestor.data = ancestor.data || {}
+      ancestor.data.depth = maxDepth - depth
       break
     }
   }
