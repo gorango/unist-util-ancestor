@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/gorango/unist-util-ancestor/compare/v1.3.1...v1.4.0) (2023-06-22)
+
+
+### Features
+
+* add depth to returning node.data ([82e04f6](https://github.com/gorango/unist-util-ancestor/commit/82e04f6e0ed1da38aaf52328d1dc4e3aa761fac9))
+
 ### [1.3.1](https://github.com/gorango/unist-util-ancestor/compare/v1.3.0...v1.3.1) (2023-06-02)
 
 ## [1.3.0](https://github.com/gorango/unist-util-ancestor/compare/v1.2.2...v1.3.0) (2022-11-08)

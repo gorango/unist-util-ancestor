@@ -1,6 +1,6 @@
 {
   "name": "unist-util-ancestor",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Unist utility for finding the closest common ancestor for multiple nodes",
   "license": "MIT",
   "keywords": [
