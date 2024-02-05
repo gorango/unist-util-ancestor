@@ -29,7 +29,7 @@
   "scripts": {
     "build": "tsc",
     "test": "node test.js",
-    "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
+    "coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
   },
   "dependencies": {
     "unist-util-visit-parents": "^6.0.1"
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/tape": "^5.6.4",
     "@types/unist": "^3.0.2",
+    "c8": "^9.1.0",
     "tape": "^5.7.4",
     "typescript": "^5.3.3",
     "unist-builder": "^4.0.0",
