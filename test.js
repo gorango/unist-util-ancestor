@@ -1,6 +1,6 @@
 import test from 'tape'
 import { u } from 'unist-builder'
-import find from 'unist-util-find'
+import { find } from 'unist-util-find'
 import findAncestor from './index.js'
 
 const tree =
