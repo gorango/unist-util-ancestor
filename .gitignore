@@ -1,7 +1,6 @@
-.DS_Store
-index.d.ts
-test.d.ts
-*.log
-coverage/
 node_modules/
+coverage/
+test.d.ts
+package-lock.json
+pnpm-lock.yaml
 yarn.lock

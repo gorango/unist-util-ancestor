@@ -8,9 +8,9 @@ import { visitParents } from 'unist-util-visit-parents'
  * Find Ancestor
  *
  * @param { Node } tree - Root node
- * @param { Node[] } nodesToFind - Children of ancestor to find
+ * @param { Readonly<Array<Node | undefined>> } nodesToFind - Children of ancestor to find
  * @param { boolean } [includeNodes] - Whether to include target nodes in response
- * @returns { Node & { data?: { depth?: number } } } - Ancestor Node with data.depth
+ * @returns { Node } - Ancestor Node with data.depth
  */
 export default function findAncestor (tree, nodesToFind, includeNodes) {
   if (!tree) {

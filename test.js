@@ -65,11 +65,12 @@ test('should find ancestor with single node', function (t) {
   const expected = find(tree, { id: 6 })
 
   t.equal(actual, expected, 'should work with one node')
-  t.equal(actual.data.depth, 1, `should store depth of 1`)
+  t.equal(actual.data?.depth, 1, `should store depth of 1`)
   t.end()
 })
 
 test('should find ancestor with two nodes', function (t) {
+  /* @type {Array<Node>} */
   const nodesToFind = [
     find(tree, { value: 'leaf 3' }),
     find(tree, { value: 'leaf 5' })
@@ -78,7 +79,7 @@ test('should find ancestor with two nodes', function (t) {
   const expected = find(tree, { id: 5 })
 
   t.equal(actual, expected, 'should work with two nodes')
-  t.equal(actual.data.depth, 2, `should store depth of 2`)
+  t.equal(actual.data?.depth, 2, `should store depth of 2`)
   t.end()
 })
 
@@ -93,11 +94,11 @@ test('should find ancestor with more than two nodes', function (t) {
   const expected = find(tree, { id: 3 })
 
   t.equal(actual, expected, 'should work with more than two nodes')
-  t.equal(actual.data.depth, 3, `should store depth of 3`)
+  t.equal(actual.data?.depth, 3, `should store depth of 3`)
   t.end()
 })
 
-test('include ancestor', function (t) {
+test('should include ancestor in response', function (t) {
   const nodesToFind = [
     find(tree, { id: 3 }),
     find(tree, { id: 4 }),
@@ -107,6 +108,6 @@ test('include ancestor', function (t) {
   const expected = find(tree, { id: 3 })
 
   t.equal(actual, expected, 'should return node if ancestor')
-  t.equal(actual.data.depth, 2, `should store depth of 2`)
+  t.equal(actual.data?.depth, 2, `should store depth of 2`)
   t.end()
 })
