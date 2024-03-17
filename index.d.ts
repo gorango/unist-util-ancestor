@@ -1,18 +1,18 @@
-import type { Node } from 'unist'
+import type { Parent } from 'unist'
 
 /**
  * Find Ancestor
  *
- * @param { Node } tree - Root node
- * @param { Readonly<Array<Node | undefined>> } nodesToFind - Children of ancestor to find
+ * @param { Parent } tree - Root node
+ * @param { Readonly<Array<Parent | undefined>> } nodesToFind - Children of ancestor to find
  * @param { boolean } [includeNodes] - Whether to include target nodes in response
- * @returns { Node } - Ancestor Node with data.depth
+ * @returns { Parent } - Ancestor Parent with data.depth
  */
 export default function findAncestor(
-    tree: Node,
-    nodesToFind: Readonly<Array<Node | undefined>>,
+    tree: Parent,
+    nodesToFind: Readonly<Array<Parent | undefined>>,
     includeNodes?: boolean | undefined
-): Node
+): Parent
 
 declare module 'unist' {
   interface Data {

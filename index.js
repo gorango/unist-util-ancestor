@@ -1,5 +1,5 @@
 /**
- * @typedef { import('unist').Node } Node
+ * @typedef { import('unist').Parent } Parent
  */
 
 import { visitParents } from 'unist-util-visit-parents'
@@ -7,10 +7,10 @@ import { visitParents } from 'unist-util-visit-parents'
 /**
  * Find Ancestor
  *
- * @param { Node } tree - Root node
- * @param { Readonly<Array<Node | undefined>> } nodesToFind - Children of ancestor to find
+ * @param { Parent } tree - Root node
+ * @param { Readonly<Array<Parent | undefined>> } nodesToFind - Children of ancestor to find
  * @param { boolean } [includeNodes] - Whether to include target nodes in response
- * @returns { Node } - Ancestor Node with data.depth
+ * @returns { Parent } - Ancestor Parent with data.depth
  */
 export default function findAncestor (tree, nodesToFind, includeNodes) {
   if (!tree) {
