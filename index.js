@@ -1,14 +1,20 @@
 /**
  * @typedef { import('unist').Parent } Parent
+ * @typedef { import('unist').Literal } Literal
+ * @typedef { import('unist').Node } Node
  */
 
 import { visitParents } from 'unist-util-visit-parents'
 
 /**
+ * @typedef { Node | Parent | Literal } NodeLike
+ */
+
+/**
  * Find Ancestor
  *
  * @param { Parent } tree - Root node
- * @param { Readonly<Array<Parent | undefined>> } nodesToFind - Children of ancestor to find
+ * @param { Array<NodeLike | undefined> } nodesToFind - Children of ancestor to find
  * @param { boolean } [includeNodes] - Whether to include target nodes in response
  * @returns { Parent } - Ancestor Parent with data.depth
  */
