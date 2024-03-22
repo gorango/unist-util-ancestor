@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/gorango/unist-util-ancestor/compare/v1.4.2...v1.4.3) (2024-03-22)
+
+
+### Bug Fixes
+
+* extend scope of types for nodesToFind ([01a74c1](https://github.com/gorango/unist-util-ancestor/commit/01a74c19cd54e3e92301ada774379d85466b5ff3))
+
 ### [1.4.2](https://github.com/gorango/unist-util-ancestor/compare/v1.4.1...v1.4.2) (2024-03-17)
 
 
